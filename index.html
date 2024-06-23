@@ -1,23 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-
-
-
-<!-- Link to your CSS file -->
-
-
-
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-
-    <!--  CSS  -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Spinning Logo and Cursor Trail</title>
     <link rel="stylesheet" href="css/lib/bootstrap.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/custom.css">
+</head>
 <body>
 <div id="cursor-trail"></div> <!-- Container for the cursor trail -->
-</body>
+
+<header id="header-user">
+    <div class="logo-container">
+        <img id="logo" src="images/logo.png" alt="Your Logo">
+    </div>
+</header>
+
+<section id="errors"></section>
+<section id="login"></section>
+<main id="main"></main>
+
+<footer></footer>
 
 
 
@@ -39,22 +44,9 @@
 
 
     <script src="js/application.js"></script>
-</head>
-<body>
-
-    <header id="header-user"></header>
-
-    <section id="errors">
-    </section>
-
-    <section id="login"></section>
-
-    <main id="main">
-    </main>
-
-    <footer></footer>
-
-
+    <script src="js/cursor-trail.js"></script>
 
 </body>
 </html>
+
+
