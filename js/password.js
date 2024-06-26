@@ -16,4 +16,14 @@ document.addEventListener('DOMContentLoaded', () => {
             errorMessage.textContent = 'Incorrect password. Please try again.';
         }
     }
+
+    // Add keypress event listener to submit the form when Enter is pressed
+    const passwordInput = document.getElementById('password');
+    passwordInput.addEventListener('keypress', function(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault(); // Prevent the default action (if any)
+            window.checkPassword(); // Call the checkPassword function
+        }
+    });
 });
+

@@ -64,6 +64,7 @@ class TemplateBuilder
 
 }
 
+
 document.addEventListener('DOMContentLoaded', () => {
     templateBuilder = new TemplateBuilder();
 });

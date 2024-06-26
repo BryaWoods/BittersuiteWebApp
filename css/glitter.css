@@ -55,7 +55,7 @@
 .glitter img:nth-child(5) {
     top: 50%;
     left: 50%;
-    animation-duration: 8s; /* Variation in duration for this image */
+    animation-duration: 20s; /* Variation in duration for this image */
 }
 
 .glitter img:nth-child(6) {
@@ -87,4 +87,8 @@
 .glitter img {
     width: 50px;
     height: 50px;
+}
+.glitter img:nth-child(5) {
+     width: 200px;
+     height: 200px;
 }
