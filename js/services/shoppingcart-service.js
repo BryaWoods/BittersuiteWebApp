@@ -26,7 +26,7 @@ class ShoppingCartService {
                 };
 
                 templateBuilder.append("error", data, "errors")
-            })
+            });
     }
 
     setCart(data)
@@ -43,8 +43,7 @@ class ShoppingCartService {
         }
     }
 
-    loadCart()
-    {
+    loadCart() {
 
         const url = `${config.baseUrl}/cart`;
 
@@ -62,12 +61,11 @@ class ShoppingCartService {
                 };
 
                 templateBuilder.append("error", data, "errors")
-            })
+            });
 
     }
 
-    loadCartPage()
-    {
+    loadCartPage() {
         // templateBuilder.build("cart", this.cart, "main");
 
         const main = document.getElementById("main")
@@ -141,37 +139,40 @@ class ShoppingCartService {
         parent.appendChild(outerDiv);
     }
 
-    clearCart()
-    {
-
+    clearCart() {
         const url = `${config.baseUrl}/cart`;
 
         axios.delete(url)
-             .then(response => {
-                 this.cart = {
-                     items: [],
-                     total: 0
-                 }
+            .then(response => {
+                console.log("Clear cart response:", response);
 
-                 this.cart.total = response.data.total;
+                this.cart = {
+                    items: [],
+                    total: 0
+                };
 
-                 for (const [key, value] of Object.entries(response.data.items)) {
-                     this.cart.items.push(value);
-                 }
+                this.updateCartDisplay();
+                this.loadCartPage();
 
-                 this.updateCartDisplay()
-                 this.loadCartPage()
+                console.log("Cart cleared successfully");
 
-             })
-             .catch(error => {
+                // Add a success message
+                const data = {
+                    success: "Cart cleared successfully."
+                };
+                templateBuilder.append("success", data, "notifications");
+            })
+            .catch(error => {
+                console.error("Error clearing cart:", error);
 
-                 const data = {
-                     error: "Empty cart failed."
-                 };
+                const data = {
+                    error: "Empty cart failed."
+                };
 
-                 templateBuilder.append("error", data, "errors")
-             })
+                templateBuilder.append("error", data, "errors");
+            });
     }
+
 
     updateCartDisplay()
     {
@@ -182,11 +183,42 @@ class ShoppingCartService {
             cartControl.innerText = itemCount;
         }
         catch (e) {
+        console.log(e);
 
         }
     }
-}
 
+ }
+
+
+/*checkout() {
+    console.log("Checkout button clicked!");
+
+    // Prepare data for checkout (optional step)
+    const checkoutData = {
+      items: this.cart.items,
+      total: this.cart.total
+      // Add more data as needed for your checkout process
+    };
+
+    // Example: Make a POST request to your backend to process the checkout
+    axios.post(`${config.baseUrl}/checkout`, checkoutData)
+      .then(response => {
+        // Handle successful checkout response
+        console.log("Checkout successful:", response.data);
+        // Optionally, clear the cart after successful checkout
+        this.clearCart();
+        // Redirect to a thank you page or order summary page
+        window.location.href = "/order-summary.html"; // Replace with your actual page URL
+      })
+      .catch(error => {
+        // Handle errors during checkout process
+        console.error("Checkout error:", error);
+        // Display error message to the user
+        const errorMessage = "Checkout failed. Please try again later.";
+        templateBuilder.append("error", { error: errorMessage }, "errors");
+      });
+  }*/
 
 
 
